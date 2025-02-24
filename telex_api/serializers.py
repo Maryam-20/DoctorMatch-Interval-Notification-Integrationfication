@@ -4,7 +4,7 @@ from .models import TelexIntegration, KeyFeature, IntegrationSetting
 class KeyFeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = KeyFeature
-        fields = ['feature']
+        fields = ['id','feature']
 
 class IntegrationSettingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -12,7 +12,7 @@ class IntegrationSettingSerializer(serializers.ModelSerializer):
         fields = ['label', 'type', 'required', 'default']
 
 class TelexIntegrationSerializer(serializers.ModelSerializer):
-    key_features = serializers.ListField(child=serializers.CharField(), source='key_features.feature')
+    key_features = KeyFeatureSerializer(many=True, read_only=True)
     settings = IntegrationSettingSerializer(many=True, read_only=True)
     permissions = serializers.SerializerMethodField()
     descriptions = serializers.SerializerMethodField()
