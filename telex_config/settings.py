@@ -26,8 +26,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['https://doctormatch-interval-notification.onrender.com/']
-
+# ALLOWED_HOSTS = ['https://doctormatch-interval-notification.onrender.com/']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
